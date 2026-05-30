@@ -20,6 +20,21 @@ sourceSets.main.resources {
 }
 
 repositories {
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+    maven {
+        url "https://maven.latvian.dev/releases"
+        content {
+            includeGroup "dev.latvian.mods"
+            includeGroup "dev.latvian.apps"
+        }
+    }
 }
 
 base {
@@ -79,6 +94,10 @@ configurations {
 }
 
 dependencies {
+    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    compileOnly "dev.latvian.mods:kubejs-neoforge:2101.7.2-build.368"
+    compileOnly "dev.latvian.mods:rhino:2101.2.7-build.77"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
